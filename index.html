@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixelSync Weather</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- === SITE INTRO SPLASH (place as first child inside <body>) === -->
+<div id="site-intro" class="site-intro">
+  <div class="intro-inner">
+    <!-- Optional: video (place assets/videos/intro.mp4 to use it) -->
+    <video id="intro-video" class="intro-video" playsinline muted preload="auto">
+      <source src="assets/videos/intro.mp4" type="video/mp4">
+    </video>
+
+    <!-- Fallback / overlay content -->
+    <div class="intro-content" aria-hidden="false">
+      <img src="assets/logos/logo-app.png" class="intro-logo" alt="PixelSync">
+      <div class="intro-text">
+        <div class="intro-title">PixelSync Weather</div>
+        <div class="intro-sub">Developed &amp; Managed by <strong>Rounak</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="custom-cursor"><div class="cursor-halo"></div><div class="cursor-img"></div></div>
+
+<!-- GLOBAL NEON ANIMATED LINE -->
+<div class="neon-line"></div>
+
+<!-- Background Canvas -->
+<canvas id="bg-canvas"></canvas>
+
+<header class="navbar">
+  <div class="nav-inner">
+
+    <!-- Left Logo -->
+    <div class="nav-left">
+      <img src="assets/logos/logo-app.png" class="nav-logo" alt="App Logo">
+      <span class="nav-title">PixelSync</span>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#weather">Weather</a>
+      <a href="#how">Process</a>
+      <a href="#model">Scene</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <div class="nav-toggle">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+  </div>
+</header>
+
+
+
+<!-- HERO SECTION -->
+<section id="hero" class="section hero-section">
+
+  <div class="hero-content">
+    <h1 class="fade-up">
+      Experience Weather Like Never Before  
+      <span class="accent">Live & Adaptive</span>
+    </h1>
+
+    <p class="fade-up delay1">
+      PixelSync transforms your device into a live weather-reactive universe.
+    </p>
+
+    <div class="weather-pill fade-up delay2">
+      <span id="moodEmoji">☀️</span>
+      <div>
+        <div id="moodLabel">Sunny</div>
+        <div id="locationLabel" class="muted">Detecting...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO 3D MODEL -->
+  <div class="hero-model fade-up delay2">
+    <div class="spline-wrap">
+
+      <!-- Loader -->
+      <div id="hero-spline-loader" class="spline-loader visible">
+        <div class="loader-inner">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+        <div class="loader-text">Loading 3D...</div>
+      </div>
+
+      <!-- Your Spline Model -->
+      <iframe
+        id="hero-spline-iframe"
+        class="spline-frame"
+        src="https://my.spline.design/robotfollowcursorforlandingpage-EfXbb5b6xibMKUZ6pf28wShw/"
+        frameborder="0"
+        allow="fullscreen; autoplay"
+        sandbox="allow-scripts allow-same-origin allow-presentation"
+      ></iframe>
+
+    </div>
+  </div>
+
+</section>
+
+
+
+<!-- ABOUT -->
+<section id="about" class="section about-section">
+  <h2 class="fade-up">What is PixelSync?</h2>
+  <p class="fade-up delay1">
+    PixelSync is a fully adaptive weather UI system that changes theme,
+    animation, video, and 3D elements based on the real weather outside.
+  </p>
+
+  <div class="features-grid fade-up delay2">
+
+    <div class="feature-card">
+      <h3>🎨 Dynamic Themes</h3>
+      <p>Weather-based colors, moods and videos.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>🌦 Live Weather</h3>
+      <p>Auto-detected location using GPS.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>⚡ Smooth Animations</h3>
+      <p>60 FPS particles and micro-interactions.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>📱 Fully Responsive</h3>
+      <p>Optimized for Mobile & Desktop.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- WEATHER DASHBOARD -->
+<section id="weather" class="section weather-section">
+  <h2 class="fade-up">Live Weather Dashboard</h2>
+
+  <div class="dashboard-grid fade-up delay1">
+    <div class="w-card">
+      <h3>Temperature</h3>
+      <div id="tempNow">--°C</div>
+      <p id="descNow" class="muted">--</p>
+    </div>
+
+    <div class="w-card">
+      <h3>Today</h3>
+      <p id="todaySummary" class="muted">--</p>
+    </div>
+
+    <div class="w-card">
+      <h3>Wind / Forecast</h3>
+      <p id="forecastSummary" class="muted">--</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- HOW IT WORKS -->
+<section id="how" class="section how-section">
+  <h2 class="fade-up">How It Works</h2>
+
+  <div class="steps fade-up delay1">
+    <div>1️⃣ Detects your location automatically</div>
+    <div>2️⃣ Fetches live weather using OpenWeather API</div>
+    <div>3️⃣ Updates theme + video + particles</div>
+    <div>4️⃣ UI + Dashboard updates instantly</div>
+  </div>
+</section>
+
+
+
+<!-- 3D WEATHER SCENE VIDEO -->
+<section id="model" class="section model-section">
+  <h2 class="fade-up">3D Weather Scene</h2>
+  <p class="fade-up delay1">Video changes depending on live weather.</p>
+
+  <div id="model-container" class="main-model fade-up delay2">
+
+    <!-- Loader -->
+    <div id="video-loader" class="spline-loader visible">
+      <div class="loader-inner">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="loader-text">Preparing Scene…</div>
+    </div>
+
+<video id="weather-video" class="weather-video" playsinline muted loop preload="auto">
+  <source id="video-source" src="" type="video/mp4">
+</video>
+
+
+  </div>
+</section>
+
+
+
+<footer class="footer fade-up delay2">
+
+  <!-- Brand Block -->
+  <div class="footer-brand">
+    <img src="assets/logos/logo-app.png" class="footer-main-logo">
+    <h3 class="footer-title">PixelSync Weather</h3>
+    <p class="footer-tagline animated-slogan">
+      Adaptive • Intelligent • Real-Time
+    </p>
+  </div>
+
+  <!-- Social Icons -->
+  <div class="footer-socials">
+    <a href="https://github.com/rounakchakraborty834-droid">
+      <img src="assets/logos/logo-github.png" class="footer-icon">
+    </a>
+
+    <a href="https://instagram.com/_rounak._.29">
+      <img src="assets/logos/logo-instagram.png" class="footer-icon">
+    </a>
+
+    <a href="https://linkedin.com/in/rounak-chakraborty-b55378369">
+      <img src="assets/logos/logo-linkedin.png" class="footer-icon">
+    </a>
+
+    <a href="https://rounak-portfolio.lovable.app">
+      <img src="assets/logos/logo-personal.png" class="footer-icon">
+    </a>
+  </div>
+
+  <!-- MINI CONTACT FORM -->
+  <div class="footer-form">
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Email Address">
+    <textarea placeholder="Your Message"></textarea>
+    <button class="footer-btn">Send Message</button>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <div class="footer-divider"></div>
+    <p>© 2025 PixelSync Weather • Built by Rounak</p>
+  </div>
+
+</footer>
+
+
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
